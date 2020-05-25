@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    tools:context=".Home.HomeItemFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/Orange">
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:background="@drawable/button_transparent"
+            android:drawableStart="@drawable/left_arrow_white"
+            android:paddingStart="15dp"
+            android:textColor="@color/Orange"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textAllCaps="true"
+            android:textColor="@color/White"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/backButton"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        style="@android:style/Widget.ListView.Menu"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9" />
+
+</LinearLayout>

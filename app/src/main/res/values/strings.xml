@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Mot</string>
+
+    <string name="home">Дом</string>
+    <string name="car">Автомобил</string>
+    <string name="settings">Настройки</string>
+    <string name="back">Назад</string>
+    <string name="list_is_empty">Списъкът е празен</string>
+    <string name="home_payment_text">Плащане на %1$s за месец %2$s</string>
+    <string name="car_payment_text">Плащане на %1$s</string>
+    <string name="placeholder_1">%1$s</string>
+    <string name="placeholder_2">%1$s %2$s</string>
+    <string name="placeholder_3">%1$s %2$s %3$s</string>
+    <string name="job">Работа</string>
+    <string name="paid_sum">Платена сума</string>
+    <string name="cancel">Отказ</string>
+    <string name="not_paid">Не сте заплатили!</string>
+    <string name="saturday">събота</string>
+    <string name="sunday">неделя</string>
+</resources>
