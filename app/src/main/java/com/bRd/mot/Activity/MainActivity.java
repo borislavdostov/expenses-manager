@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
-        goToMenuFragment();
+//        goToMenuFragment();
     }
 
     @Override
