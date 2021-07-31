@@ -18,7 +18,7 @@
         android:paddingTop="5dp"
         android:paddingEnd="20dp"
         android:text="@string/car_payment_text"
-        android:textColor="@color/AlmostBlack"
+        android:textColor="@color/gray"
         android:textSize="18sp" />
 
     <LinearLayout
@@ -42,7 +42,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="start|center_vertical"
             android:text="Платено на"
-            android:textColor="@color/Gray"
+            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <EditText
@@ -57,9 +57,9 @@
             android:inputType="text"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:textColor="@color/AlmostBlack"
-            android:textColorHighlight="@color/AlmostBlack"
-            android:textColorLink="@color/GrayDark"
+            android:textColor="@color/gray"
+            android:textColorHighlight="@color/gray"
+            android:textColorLink="@color/gray_darkest"
             android:textCursorDrawable="@drawable/cursor_drawable" />
     </LinearLayout>
 
@@ -83,7 +83,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="start|center_vertical"
             android:text="Краен срок"
-            android:textColor="@color/Gray"
+            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <EditText
@@ -98,9 +98,9 @@
             android:inputType="text"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:textColor="@color/AlmostBlack"
-            android:textColorHighlight="@color/AlmostBlack"
-            android:textColorLink="@color/GrayDark"
+            android:textColor="@color/gray"
+            android:textColorHighlight="@color/gray"
+            android:textColorLink="@color/gray_darkest"
             android:textCursorDrawable="@drawable/cursor_drawable" />
     </LinearLayout>
 
@@ -124,7 +124,7 @@
             android:fontFamily="sans-serif-light"
             android:gravity="start|center_vertical"
             android:text="Платена сума"
-            android:textColor="@color/Gray"
+            android:textColor="@color/gray"
             android:textSize="18sp" />
 
         <EditText
@@ -140,9 +140,9 @@
             android:maxLength="7"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:textColor="@color/AlmostBlack"
-            android:textColorHighlight="@color/AlmostBlack"
-            android:textColorLink="@color/GrayDark"
+            android:textColor="@color/gray"
+            android:textColorHighlight="@color/gray"
+            android:textColorLink="@color/gray_darkest"
             android:textCursorDrawable="@drawable/cursor_drawable" />
     </LinearLayout>
 
@@ -161,7 +161,7 @@
             android:background="@drawable/button_transparent_rounded"
             android:fontFamily="sans-serif-light"
             android:text="Отказ"
-            android:textColor="@color/AlmostBlack" />
+            android:textColor="@color/gray" />
 
         <Button
             android:id="@+id/okButton"
@@ -172,7 +172,7 @@
             android:background="@drawable/button_transparent_rounded"
             android:fontFamily="sans-serif-light"
             android:text="@android:string/ok"
-            android:textColor="@color/AlmostBlack" />
+            android:textColor="@color/gray" />
     </LinearLayout>
 
 </LinearLayout>

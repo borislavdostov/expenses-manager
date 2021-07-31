@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mot</string>
+    <string name="app_name">Expenses Manager</string>
 
     <string name="home">Дом</string>
     <string name="car">Автомобил</string>

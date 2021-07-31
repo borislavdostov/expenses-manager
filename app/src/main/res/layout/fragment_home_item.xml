@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/Orange">
+        android:background="@color/orange">
 
         <Button
             android:id="@+id/backButton"
@@ -21,7 +21,7 @@
             android:background="@drawable/button_transparent"
             android:drawableStart="@drawable/left_arrow_white"
             android:paddingStart="15dp"
-            android:textColor="@color/Orange"
+            android:textColor="@color/orange"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:textAllCaps="true"
-            android:textColor="@color/White"
+            android:textColor="@color/gray_light"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

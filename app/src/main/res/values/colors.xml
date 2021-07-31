@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#3C3C3C</color>
 
-    <color name="Transparent">#00FFFFFF</color>
-    <color name="GrayTransparent">#1A585858</color>
-    <color name="AlmostBlack">#3C3C3C</color>
-    <color name="GrayDark">#575757</color>
-    <color name="Gray">#777777</color>
-    <color name="GrayLight">#9E9E9E</color>
-    <color name="AlmostWhite">#EBEBEB</color>
-    <color name="Background">#FAFAFA</color>
-    <color name="White">#FFFFFF</color>
-    <color name="Orange">#FB9904</color>
-    <color name="OrangeDark">#D37F03</color>
-    <color name="Blue">#0492CE</color>
-    <color name="BlueDark">#0374A3</color>
-    <color name="Green">#66B032</color>
-    <color name="GreenDark">#55922A</color>
-    <color name="Red">#FF2712</color>
-    <color name="RedDark">#CC1E0E</color>
+    <!--     Gray     -->
+    <color name="gray_lightest">#F5F5FA</color>
+    <color name="gray_light">#EBF0F5</color>
+    <color name="gray">#D2DCEB</color>
+    <color name="gray_dark">#5F7391</color>
+    <color name="gray_darkest">#0F233C</color>
+
+    <!--     Orange     -->
+    <color name="orange_white">#FFFAF0</color>
+    <color name="orange_lightest">#FAE19B</color>
+    <color name="orange_light">#FAE19B</color>
+    <color name="orange">#F0C864</color>
+    <color name="orange_dark">#C8A53C</color>
+    <color name="orange_darkest">#8C691E</color>
+
+    <!--     Blue     -->
+    <color name="blue_white">#EBF5FF</color>
+    <color name="blue_lightest">#AAD2F5</color>
+    <color name="blue_light">#5FA0D7</color>
+    <color name="blue">#2D82C8</color>
+    <color name="blue_dark">#2364A0</color>
+    <color name="blue_darkest">#19466E</color>
+
+    <!--     Green     -->
+    <color name="green_white">#E6FFFA</color>
+    <color name="green_lightest">#A5EBEB</color>
+    <color name="green_light">#6ED7D2</color>
+    <color name="green">#3CAAA0</color>
+    <color name="green_dark">#289187</color>
+    <color name="green_darkest">#19645A</color>
+
+    <!--     Red     -->
+    <color name="red_white">#FAE6E6</color>
+    <color name="red_lightest">#F5AAAA</color>
+    <color name="red_light">#E16464</color>
+    <color name="red">#DC2D2D</color>
+    <color name="red_dark">#B41E1E</color>
+    <color name="red_darkest">#871919</color>
 </resources>
