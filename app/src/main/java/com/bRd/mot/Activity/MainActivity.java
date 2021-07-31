@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bRd.mot.Car.CarCategoryFragment;
-import com.bRd.mot.Entity.HomeCategory;
+import com.bRd.mot.Entity.HouseCategory;
 import com.bRd.mot.Home.HomeCategoryFragment;
 import com.bRd.mot.Home.HomeItemFragment;
 import com.bRd.mot.Job.JobFragment;
@@ -82,10 +82,10 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void enterToHomeItemFragment(HomeCategory homeCategory) {
+    public void enterToHomeItemFragment(HouseCategory houseCategory) {
 
         HomeItemFragment homeItemFragment = new HomeItemFragment();
-        homeItemFragment.homeCategory = homeCategory;
+        homeItemFragment.houseCategory = houseCategory;
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left,
                 R.anim.enter_from_left, R.anim.exit_to_right);

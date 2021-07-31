@@ -54,7 +54,7 @@ public class CarCategoryListViewAdapter extends BaseAdapter {
         if (layoutInflater != null)
             view = layoutInflater.inflate(R.layout.list_item_car_category, null);
 
-        TextView nameTextView = view.findViewById(R.id.nameTextView);
+        TextView nameTextView = view.findViewById(R.id.name_tv);
         nameTextView.setText(carCategory.getName());
         TextView fromDateToDateTextView = view.findViewById(R.id.fromDateToDateTextView);
         TextView sumTextView = view.findViewById(R.id.sumTextView);

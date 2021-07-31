@@ -14,10 +14,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.bRd.mot.Entity.HomeCategory;
+import com.bRd.mot.Entity.HouseCategory;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
-import com.bRd.mot.Utils.Utility;
 
 import java.util.ArrayList;
 
@@ -28,10 +27,10 @@ public class HomeCategoryFragment extends Fragment {
     private Button backButton;
     private ListView listView;
 
-    private ArrayList<HomeCategory> homeCategoryList;
+    private ArrayList<HouseCategory> houseCategoryList;
     private HomeCategoryListViewAdapter homeCategoryListViewAdapter;
 
-    private HomeCategory homeCategory;
+    private HouseCategory houseCategory;
 
     private OnFragmentInteractionListener activityCommander;
 
@@ -65,14 +64,14 @@ public class HomeCategoryFragment extends Fragment {
 
         resizeButtonDrawable();
 
-        homeCategoryList = dbHelper.getHomeCategoryList();
+        houseCategoryList = dbHelper.getHouseCategories();
 
-        if (homeCategoryList.size() == 0) {
+        if (houseCategoryList.size() == 0) {
             insertHomeCategories();
-            homeCategoryList = dbHelper.getHomeCategoryList();
+            houseCategoryList = dbHelper.getHouseCategories();
         }
 
-        homeCategoryListViewAdapter = new HomeCategoryListViewAdapter(this, homeCategoryList);
+        homeCategoryListViewAdapter = new HomeCategoryListViewAdapter(this, houseCategoryList);
         listView.setAdapter(homeCategoryListViewAdapter);
 
         return view;
@@ -89,8 +88,8 @@ public class HomeCategoryFragment extends Fragment {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-            homeCategory = (HomeCategory) adapterView.getItemAtPosition(i);
-            activityCommander.enterToHomeItemFragment(homeCategory);
+            houseCategory = (HouseCategory) adapterView.getItemAtPosition(i);
+            activityCommander.enterToHomeItemFragment(houseCategory);
         }
     };
 
@@ -104,16 +103,16 @@ public class HomeCategoryFragment extends Fragment {
 
     //insertHomeCategories
     private void insertHomeCategories() {
-        HomeCategory homeCategory1 = new HomeCategory("Наем");
-        HomeCategory homeCategory2 = new HomeCategory("Ток");
-        HomeCategory homeCategory3 = new HomeCategory("Вода");
-        HomeCategory homeCategory4 = new HomeCategory("Интернет и ТВ");
-        HomeCategory homeCategory5 = new HomeCategory("Телефон");
-        dbHelper.insertHomeCategory(homeCategory1);
-        dbHelper.insertHomeCategory(homeCategory2);
-        dbHelper.insertHomeCategory(homeCategory3);
-        dbHelper.insertHomeCategory(homeCategory4);
-        dbHelper.insertHomeCategory(homeCategory5);
+        HouseCategory houseCategory1 = new HouseCategory("Наем");
+        HouseCategory houseCategory2 = new HouseCategory("Ток");
+        HouseCategory houseCategory3 = new HouseCategory("Вода");
+        HouseCategory houseCategory4 = new HouseCategory("Интернет и ТВ");
+        HouseCategory houseCategory5 = new HouseCategory("Телефон");
+        dbHelper.insertHomeCategory(houseCategory1);
+        dbHelper.insertHomeCategory(houseCategory2);
+        dbHelper.insertHomeCategory(houseCategory3);
+        dbHelper.insertHomeCategory(houseCategory4);
+        dbHelper.insertHomeCategory(houseCategory5);
     }
 
     @Override
@@ -137,6 +136,6 @@ public class HomeCategoryFragment extends Fragment {
 
         void popBackStack();
 
-        void enterToHomeItemFragment(HomeCategory homeCategory);
+        void enterToHomeItemFragment(HouseCategory houseCategory);
     }
 }

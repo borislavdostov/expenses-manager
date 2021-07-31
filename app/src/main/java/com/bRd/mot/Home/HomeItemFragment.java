@@ -23,7 +23,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.bRd.mot.Entity.HomeCategory;
+import com.bRd.mot.Entity.HouseCategory;
 import com.bRd.mot.Entity.HomeItem;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
@@ -45,7 +45,7 @@ public class HomeItemFragment extends Fragment {
     private ArrayList<HomeItem> homeItemList;
     private HomeItemListViewAdapter homeItemListViewAdapter;
 
-    public HomeCategory homeCategory;
+    public HouseCategory houseCategory;
 
     private OnFragmentInteractionListener activityCommander;
 
@@ -81,17 +81,17 @@ public class HomeItemFragment extends Fragment {
         listView.setOnItemClickListener(onItemClickListener);
         listView.setOnItemLongClickListener(onItemLongClickListener);
 
-        titleTextView.setText(homeCategory.getName());
+        titleTextView.setText(houseCategory.getName());
 
         resizeButtonDrawable();
 
-        homeItemList = dbHelper.getHomeItemList(homeCategory.getId());
+        homeItemList = dbHelper.getHomeItemList(houseCategory.getId());
         if (homeItemList.size() == 0) {
             for (int i = 1; i <= 12; i++) {
-                HomeItem homeItem = new HomeItem(homeCategory.getId(), Utility.getMonthToBulgarian(i));
+                HomeItem homeItem = new HomeItem(houseCategory.getId(), Utility.getMonthToBulgarian(i));
                 dbHelper.insertHomeItem(homeItem);
             }
-            homeItemList = dbHelper.getHomeItemList(homeCategory.getId());
+            homeItemList = dbHelper.getHomeItemList(houseCategory.getId());
         }
 
         homeItemListViewAdapter = new HomeItemListViewAdapter(this, homeItemList);
@@ -197,7 +197,7 @@ public class HomeItemFragment extends Fragment {
         Button okButton = view.findViewById(R.id.okButton);
         Button cancelButton = view.findViewById(R.id.cancelButton);
 
-        titleTextView.setText(context.getString(R.string.home_payment_text, homeCategory.getName().toLowerCase(), homeItem.getMonth().toLowerCase()));
+        titleTextView.setText(context.getString(R.string.home_payment_text, houseCategory.getName().toLowerCase(), homeItem.getMonth().toLowerCase()));
 
         sumEditText.requestFocus();
         final InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
