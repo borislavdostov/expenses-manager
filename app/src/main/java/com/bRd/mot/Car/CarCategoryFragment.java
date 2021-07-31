@@ -20,13 +20,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bRd.mot.Dialog.DatePickerDialog;
 import com.bRd.mot.Entity.CarCategory;
+import com.bRd.mot.Helper.DatePickerListener;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
 import com.bRd.mot.Utils.Utility;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CarCategoryFragment extends Fragment {
 
@@ -172,11 +176,26 @@ public class CarCategoryFragment extends Fragment {
             @Override
             public void onFocusChange(View view, boolean b) {
 
-                if (paidDateEditText.isFocused())
-                    Utility.showDatePickerDialog(context, paidDateEditText);
-                else if (deadlineDateEditText.isFocused())
-                    Utility.showDatePickerDialog(context, deadlineDateEditText);
-
+                if (paidDateEditText.isFocused()){
+                    new DatePickerDialog(context, new DatePickerListener() {
+                        @Override
+                        public void onDateSelected(Date date) {
+                            // TODO: 31.7.2021 г. Implement logic
+                            Toast.makeText(context, "Implement logic", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+//                    Utility.showDatePickerDialog(context, paidDateEditText);
+                }
+                else if (deadlineDateEditText.isFocused()){
+                    new DatePickerDialog(context, new DatePickerListener() {
+                        @Override
+                        public void onDateSelected(Date date) {
+                            // TODO: 31.7.2021 г. Implement logic
+                            Toast.makeText(context, "Implement logic", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+//                    Utility.showDatePickerDialog(context, deadlineDateEditText);
+                }
             }
         };
 

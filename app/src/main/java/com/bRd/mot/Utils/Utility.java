@@ -36,59 +36,59 @@ public class Utility {
         return monthString.substring(0, 1).toUpperCase() + monthString.substring(1);
     }
 
-    //showDatePickerDialog
-    public static void showDatePickerDialog(Context context, final EditText editText) {
-
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.dialog_date_picker, null);
-
-        final DatePicker datePicker = view.findViewById(R.id.datePicker);
-
-        Button backButton = view.findViewById(R.id.backButton);
-        Button okButton = view.findViewById(R.id.okButton);
-
-        final Dialog dialog = new Dialog(context, R.style.AppTheme);
-        dialog.setContentView(view);
-
-        View.OnClickListener onClick = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (view.getId() == R.id.backButton) {
-
-                    dialog.dismiss();
-
-                } else if (view.getId() == R.id.okButton) {
-
-                    int day = datePicker.getDayOfMonth();
-                    int month = datePicker.getMonth();
-                    int year = datePicker.getYear();
-
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.set(year, month, day);
-
-                    Date date = new Date(calendar.getTimeInMillis());
-                    editText.setText(formatDateToString(date));
-                    dialog.dismiss();
-                }
-                editText.clearFocus();
-            }
-        };
-
-        backButton.setOnClickListener(onClick);
-        okButton.setOnClickListener(onClick);
-
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.getWindow().setLayout(600, 600);
-            WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
-            lp.dimAmount = 0.7f;
-            lp.y = -140;
-            dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        }
-    }
+//    //showDatePickerDialog
+//    public static void showDatePickerDialog(Context context, final EditText editText) {
+//
+//        LayoutInflater layoutInflater = LayoutInflater.from(context);
+//        View view = layoutInflater.inflate(R.layout.dialog_date_picker, null);
+//
+//        final DatePicker datePicker = view.findViewById(R.id.datePicker);
+//
+//        Button backButton = view.findViewById(R.id.backButton);
+//        Button okButton = view.findViewById(R.id.okButton);
+//
+//        final Dialog dialog = new Dialog(context, R.style.AppTheme);
+//        dialog.setContentView(view);
+//
+//        View.OnClickListener onClick = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if (view.getId() == R.id.backButton) {
+//
+//                    dialog.dismiss();
+//
+//                } else if (view.getId() == R.id.okButton) {
+//
+//                    int day = datePicker.getDayOfMonth();
+//                    int month = datePicker.getMonth();
+//                    int year = datePicker.getYear();
+//
+//                    Calendar calendar = Calendar.getInstance();
+//                    calendar.set(year, month, day);
+//
+//                    Date date = new Date(calendar.getTimeInMillis());
+//                    editText.setText(formatDateToString(date));
+//                    dialog.dismiss();
+//                }
+//                editText.clearFocus();
+//            }
+//        };
+//
+//        backButton.setOnClickListener(onClick);
+//        okButton.setOnClickListener(onClick);
+//
+//        dialog.setCanceledOnTouchOutside(false);
+//        dialog.show();
+//        if (dialog.getWindow() != null) {
+//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//            dialog.getWindow().setLayout(600, 600);
+//            WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+//            lp.dimAmount = 0.7f;
+//            lp.y = -140;
+//            dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+//        }
+//    }
 
     //formatDateToString
     public static String formatDateToString(Date date) {

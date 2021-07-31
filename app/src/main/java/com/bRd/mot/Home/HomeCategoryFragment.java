@@ -71,7 +71,8 @@ public class HomeCategoryFragment extends Fragment {
             houseCategoryList = dbHelper.getHouseCategories();
         }
 
-        homeCategoryListViewAdapter = new HomeCategoryListViewAdapter(this, houseCategoryList);
+        homeCategoryListViewAdapter =
+                new HomeCategoryListViewAdapter(this, houseCategoryList);
         listView.setAdapter(homeCategoryListViewAdapter);
 
         return view;
