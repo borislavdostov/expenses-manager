@@ -20,7 +20,7 @@
         </activity>
 
         <activity
-            android:name=".House.HouseCategoryActivity"
+            android:name=".Home.HomeCategoryActivity"
             android:parentActivityName=".Activity.MainActivity"
             android:launchMode="singleInstance"
             />

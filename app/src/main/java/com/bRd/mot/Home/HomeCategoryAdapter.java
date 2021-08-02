@@ -1,4 +1,4 @@
-package com.bRd.mot.House;
+package com.bRd.mot.Home;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,13 +14,13 @@ import com.bRd.mot.R;
 
 import java.util.ArrayList;
 
-public class HouseCategoryAdapter extends RecyclerView.Adapter<HouseCategoryAdapter.ViewHolder> {
+public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapter.ViewHolder> {
 
     ArrayList<HouseCategory> houseCategories;
-    private CategoryClickListener categoryClickListener;
+    private final CategoryClickListener categoryClickListener;
 
-    public HouseCategoryAdapter(ArrayList<HouseCategory> houseCategories,
-                                CategoryClickListener categoryClickListener) {
+    public HomeCategoryAdapter(ArrayList<HouseCategory> houseCategories,
+                               CategoryClickListener categoryClickListener) {
         this.houseCategories = houseCategories;
         this.categoryClickListener = categoryClickListener;
     }
@@ -29,7 +29,7 @@ public class HouseCategoryAdapter extends RecyclerView.Adapter<HouseCategoryAdap
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_house_category, parent, false);
+                .inflate(R.layout.activity_home_category, parent, false);
         return new ViewHolder(view);
     }
 
