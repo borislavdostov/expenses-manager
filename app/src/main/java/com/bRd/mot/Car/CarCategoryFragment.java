@@ -122,8 +122,8 @@ public class CarCategoryFragment extends Fragment {
         final EditText paidDateEditText = view.findViewById(R.id.paidDateEditText);
         final EditText deadlineDateEditText = view.findViewById(R.id.deadlineDateEditText);
         final EditText sumEditText = view.findViewById(R.id.sumEditText);
-        Button okButton = view.findViewById(R.id.okButton);
-        Button cancelButton = view.findViewById(R.id.cancelButton);
+        Button okButton = view.findViewById(R.id.ok_btn);
+        Button cancelButton = view.findViewById(R.id.cancel_btn);
 
         titleTextView.setText(context.getString(R.string.car_payment_text, carCategory.getName()));
 
@@ -134,7 +134,7 @@ public class CarCategoryFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if (view.getId() == R.id.okButton) {
+                if (view.getId() == R.id.ok_btn) {
 
                     if (paidDateEditText.getText().length() == 0) {
 
@@ -161,7 +161,7 @@ public class CarCategoryFragment extends Fragment {
                         hideKeyboard(activity);
                     }
 
-                } else if (view.getId() == R.id.cancelButton) {
+                } else if (view.getId() == R.id.cancel_btn) {
 
                     dialog.dismiss();
                     hideKeyboard(activity);

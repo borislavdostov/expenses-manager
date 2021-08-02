@@ -83,7 +83,7 @@
         android:layout_weight="3.5">
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/cancel_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/button_transparent_rounded"
@@ -103,7 +103,7 @@
             app:layout_constraintGuide_begin="150dp" />
 
         <Button
-            android:id="@+id/okButton"
+            android:id="@+id/ok_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:background="@drawable/button_transparent_rounded"

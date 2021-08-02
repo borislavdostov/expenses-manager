@@ -13,7 +13,7 @@
         android:layout_weight="6.5">
 
         <TextView
-            android:id="@+id/messageTextView"
+            android:id="@+id/message_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="sans-serif-light"
@@ -31,7 +31,7 @@
         android:layout_weight="3.5">
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/cancel_btn"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -52,7 +52,7 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <Button
-            android:id="@+id/okButton"
+            android:id="@+id/ok_btn"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="match_parent"

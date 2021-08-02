@@ -7,20 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 
-import androidx.annotation.NonNull;
 
 import com.bRd.mot.Helper.DatePickerListener;
 import com.bRd.mot.R;
-import com.bRd.mot.Utils.Utility;
 
 import java.util.Calendar;
 import java.util.Date;
 
 public class DatePickerDialog extends Dialog {
 
-    DatePicker datePicker;
-    private DatePickerListener datePickerListener;
+    private final DatePickerListener datePickerListener;
 
+    DatePicker datePicker;
 
     public DatePickerDialog(Context context, DatePickerListener datePickerListener) {
         super(context);
@@ -36,7 +34,7 @@ public class DatePickerDialog extends Dialog {
         datePicker = findViewById(R.id.datePicker);
 
         Button backButton = findViewById(R.id.backButton);
-        Button okButton = findViewById(R.id.okButton);
+        Button okButton = findViewById(R.id.ok_btn);
 
         backButton.setOnClickListener(onClick);
         okButton.setOnClickListener(onClick);
@@ -50,7 +48,7 @@ public class DatePickerDialog extends Dialog {
 
                 dismiss();
 
-            } else if (view.getId() == R.id.okButton) {
+            } else if (view.getId() == R.id.ok_btn) {
 
                 int day = datePicker.getDayOfMonth();
                 int month = datePicker.getMonth();

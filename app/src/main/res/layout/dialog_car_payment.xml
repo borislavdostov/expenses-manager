@@ -153,7 +153,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/cancel_btn"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -164,7 +164,7 @@
             android:textColor="@color/gray" />
 
         <Button
-            android:id="@+id/okButton"
+            android:id="@+id/ok_btn"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="match_parent"

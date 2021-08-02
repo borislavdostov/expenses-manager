@@ -146,9 +146,9 @@ public class HomeItemFragment extends Fragment {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.dialog_question, null);
 
-        final TextView messageTextView = view.findViewById(R.id.messageTextView);
-        Button cancelButton = view.findViewById(R.id.cancelButton);
-        Button okButton = view.findViewById(R.id.okButton);
+        final TextView messageTextView = view.findViewById(R.id.message_tv);
+        Button cancelButton = view.findViewById(R.id.cancel_btn);
+        Button okButton = view.findViewById(R.id.ok_btn);
 
         messageTextView.setText("Наистина ли искате да отбележите тази сметка като неплатена?");
 
@@ -158,7 +158,7 @@ public class HomeItemFragment extends Fragment {
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (view.getId() == R.id.cancelButton) {
+                if (view.getId() == R.id.cancel_btn) {
                     dialog.dismiss();
                 } else {
 
@@ -194,8 +194,8 @@ public class HomeItemFragment extends Fragment {
         TextView titleTextView = view.findViewById(R.id.titleTextView);
         TextView sumTextView = view.findViewById(R.id.sumTextView);
         final EditText sumEditText = view.findViewById(R.id.sumEditText);
-        Button okButton = view.findViewById(R.id.okButton);
-        Button cancelButton = view.findViewById(R.id.cancelButton);
+        Button okButton = view.findViewById(R.id.ok_btn);
+        Button cancelButton = view.findViewById(R.id.cancel_btn);
 
         titleTextView.setText(context.getString(R.string.home_payment_text, houseCategory.getName().toLowerCase(), homeItem.getMonth().toLowerCase()));
 
@@ -216,7 +216,7 @@ public class HomeItemFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if (view.getId() == R.id.okButton) {
+                if (view.getId() == R.id.ok_btn) {
 
                     if (sumEditText.getText().length() == 0) {
 
@@ -234,7 +234,7 @@ public class HomeItemFragment extends Fragment {
                         Utility.hideKeyboard(activity);
                     }
 
-                } else if (view.getId() == R.id.cancelButton) {
+                } else if (view.getId() == R.id.cancel_btn) {
 
                     dialog.dismiss();
                     Utility.hideKeyboard(activity);
