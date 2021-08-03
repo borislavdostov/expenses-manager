@@ -42,7 +42,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/home_item_rv"
         style="@android:style/Widget.ListView.Menu"
         android:layout_width="match_parent"
         android:layout_height="0dp"

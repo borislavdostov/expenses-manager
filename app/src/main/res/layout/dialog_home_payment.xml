@@ -33,7 +33,7 @@
         android:focusableInTouchMode="true">
 
         <TextView
-            android:id="@+id/sumTextView"
+            android:id="@+id/sum_tv"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="20dp"

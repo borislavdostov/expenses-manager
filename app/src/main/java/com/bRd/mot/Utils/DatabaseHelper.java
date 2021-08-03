@@ -10,7 +10,7 @@ import android.net.ParseException;
 import android.util.Log;
 
 import com.bRd.mot.Entity.CarCategory;
-import com.bRd.mot.Entity.HouseCategory;
+import com.bRd.mot.Entity.HomeCategory;
 import com.bRd.mot.Entity.HomeItem;
 import com.bRd.mot.Entity.JobDay;
 
@@ -122,15 +122,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //insertHomeCategory
-    public void insertHomeCategory(HouseCategory houseCategory) {
+    public void insertHomeCategory(HomeCategory homeCategory) {
 
         try {
             db = getWritableDatabase();
             ContentValues cv = new ContentValues();
-            cv.put(HOME_CATEGORY_NAME, houseCategory.getName());
-            cv.put(HOME_CATEGORY_CAME_OUT_DAY, houseCategory.getCameOutDay());
-            cv.put(HOME_CATEGORY_DEADLINE_DAY, houseCategory.getDeadlineDay());
-            cv.put(HOME_CATEGORY_HAS_CONSTANT_PRICE, houseCategory.hasConstantPrice());
+            cv.put(HOME_CATEGORY_NAME, homeCategory.getName());
+            cv.put(HOME_CATEGORY_CAME_OUT_DAY, homeCategory.getCameOutDay());
+            cv.put(HOME_CATEGORY_DEADLINE_DAY, homeCategory.getDeadlineDay());
+            cv.put(HOME_CATEGORY_HAS_CONSTANT_PRICE, homeCategory.hasConstantPrice());
 
             db.insertOrThrow(TABLE_HOME_CATEGORY, null, cv);
 
@@ -144,16 +144,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //editHomeCategorySettings
-    public void editHomeCategorySettings(HouseCategory houseCategory) {
+    public void editHomeCategorySettings(HomeCategory homeCategory) {
 
         try {
             db = getWritableDatabase();
             db.execSQL("UPDATE " + TABLE_HOME_CATEGORY + " SET " +
-                    HOME_CATEGORY_CAME_OUT_DAY + "='" + houseCategory.getCameOutDay() + "'," +
-                    HOME_CATEGORY_DEADLINE_DAY + "='" + houseCategory.getDeadlineDay() + "'," +
-                    HOME_CATEGORY_HAS_CONSTANT_PRICE + "='" + houseCategory.hasConstantPrice() + "'," +
-                    HOME_CATEGORY_CONSTANT_PRICE + "='" + houseCategory.getConstantPrice() +
-                    "' WHERE " + HOME_CATEGORY_ID + "=" + houseCategory.getId());
+                    HOME_CATEGORY_CAME_OUT_DAY + "='" + homeCategory.getCameOutDay() + "'," +
+                    HOME_CATEGORY_DEADLINE_DAY + "='" + homeCategory.getDeadlineDay() + "'," +
+                    HOME_CATEGORY_HAS_CONSTANT_PRICE + "='" + homeCategory.hasConstantPrice() + "'," +
+                    HOME_CATEGORY_CONSTANT_PRICE + "='" + homeCategory.getConstantPrice() +
+                    "' WHERE " + HOME_CATEGORY_ID + "=" + homeCategory.getId());
 
         } catch (SQLException e) {
             Log.e("SQL Error", e.getMessage());
@@ -165,9 +165,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //getHomeCategoryById
-    public HouseCategory getHomeCategoryById(int id) {
+    public HomeCategory getHomeCategoryById(int id) {
 
-        HouseCategory houseCategory = new HouseCategory();
+        HomeCategory homeCategory = new HomeCategory();
 
         db = getReadableDatabase();
         try (Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_HOME_CATEGORY +
@@ -175,15 +175,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             while (cursor.moveToFirst()) {
 
-                houseCategory.setId(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_ID)));
-                houseCategory.setName(cursor.getString(cursor.getColumnIndex(HOME_CATEGORY_NAME)));
-                houseCategory.setCameOutDay(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_CAME_OUT_DAY)));
-                houseCategory.setDeadlineDay(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_DEADLINE_DAY)));
+                homeCategory.setId(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_ID)));
+                homeCategory.setName(cursor.getString(cursor.getColumnIndex(HOME_CATEGORY_NAME)));
+                homeCategory.setCameOutDay(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_CAME_OUT_DAY)));
+                homeCategory.setDeadlineDay(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_DEADLINE_DAY)));
 
                 boolean hasConstPrice = (cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_HAS_CONSTANT_PRICE)) == 1);
-                houseCategory.setHasConstantPrice(hasConstPrice);
+                homeCategory.setHasConstantPrice(hasConstPrice);
 
-                houseCategory.setConstantPrice(cursor.getDouble(cursor.getColumnIndex(HOME_CATEGORY_CONSTANT_PRICE)));
+                homeCategory.setConstantPrice(cursor.getDouble(cursor.getColumnIndex(HOME_CATEGORY_CONSTANT_PRICE)));
             }
         } catch (SQLException e) {
             Log.e("SQL Error", e.getMessage());
@@ -193,30 +193,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (db != null)
                 db.close();
         }
-        return houseCategory;
+        return homeCategory;
     }
 
     //getHomeCategoryList
-    public ArrayList<HouseCategory> getHouseCategories() {
-        ArrayList<HouseCategory> houseCategoryList = new ArrayList<>();
+    public ArrayList<HomeCategory> getHouseCategories() {
+        ArrayList<HomeCategory> homeCategoryList = new ArrayList<>();
 
         db = getReadableDatabase();
         try (Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_HOME_CATEGORY, null)) {
 
             while (cursor.moveToNext()) {
-                HouseCategory houseCategory = new HouseCategory();
+                HomeCategory homeCategory = new HomeCategory();
 
-                houseCategory.setId(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_ID)));
-                houseCategory.setName(cursor.getString(cursor.getColumnIndex(HOME_CATEGORY_NAME)));
-                houseCategory.setCameOutDay(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_CAME_OUT_DAY)));
-                houseCategory.setDeadlineDay(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_DEADLINE_DAY)));
+                homeCategory.setId(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_ID)));
+                homeCategory.setName(cursor.getString(cursor.getColumnIndex(HOME_CATEGORY_NAME)));
+                homeCategory.setCameOutDay(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_CAME_OUT_DAY)));
+                homeCategory.setDeadlineDay(cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_DEADLINE_DAY)));
 
                 boolean hasConstPrice = (cursor.getInt(cursor.getColumnIndex(HOME_CATEGORY_HAS_CONSTANT_PRICE)) == 1);
-                houseCategory.setHasConstantPrice(hasConstPrice);
+                homeCategory.setHasConstantPrice(hasConstPrice);
 
-                houseCategory.setConstantPrice(cursor.getDouble(cursor.getColumnIndex(HOME_CATEGORY_CONSTANT_PRICE)));
+                homeCategory.setConstantPrice(cursor.getDouble(cursor.getColumnIndex(HOME_CATEGORY_CONSTANT_PRICE)));
 
-                houseCategoryList.add(houseCategory);
+                homeCategoryList.add(homeCategory);
 
             }
         } catch (SQLException e) {
@@ -227,7 +227,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (db != null)
                 db.close();
         }
-        return houseCategoryList;
+        return homeCategoryList;
     }
 
     //insertHomeItem

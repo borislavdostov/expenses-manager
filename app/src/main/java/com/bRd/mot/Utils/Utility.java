@@ -1,20 +1,8 @@
 package com.bRd.mot.Utils;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import com.bRd.mot.R;
-import com.vstechlab.easyfonts.EasyFonts;
 
 import java.text.DateFormatSymbols;
 import java.text.DecimalFormat;
@@ -26,7 +14,8 @@ import java.util.Locale;
 
 public class Utility {
 
-    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+    private static final SimpleDateFormat simpleDateFormat =
+            new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
     private static final DecimalFormat decimalFormat = new DecimalFormat("##.00");
 
     //getMonthToBulgarian
@@ -73,8 +62,9 @@ public class Utility {
     //parseStringToDouble
     public static double parseStringToDouble(String str) {
 
-        if (str.isEmpty())
+        if (str.isEmpty()) {
             return 0.00;
+        }
 
         str = str.replace(",", ".");
         return Double.parseDouble(str);
@@ -82,7 +72,6 @@ public class Utility {
 
     //setEditTextError
     public static void setEditTextError(EditText editText, String error) {
-
         editText.setError(error);
         editText.requestFocus();
     }

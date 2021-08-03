@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.bRd.mot.Entity.HomeItem;
-import com.bRd.mot.Entity.HouseCategory;
+import com.bRd.mot.Entity.HomeCategory;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
 
@@ -26,7 +26,7 @@ public class HomeCategoryActivity extends AppCompatActivity {
         category_rv = findViewById(R.id.category_rv);
 
         DatabaseHelper db = new DatabaseHelper(this);
-        ArrayList<HouseCategory> houseCategories = db.getHouseCategories();
+        ArrayList<HomeCategory> houseCategories = db.getHouseCategories();
         HomeCategoryAdapter homeCategoryAdapter =
                 new HomeCategoryAdapter(houseCategories, () -> goToActivity(HomeItem.class));
 

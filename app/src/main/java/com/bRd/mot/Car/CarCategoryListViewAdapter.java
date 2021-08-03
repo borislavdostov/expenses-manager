@@ -57,7 +57,7 @@ public class CarCategoryListViewAdapter extends BaseAdapter {
         TextView nameTextView = view.findViewById(R.id.name_tv);
         nameTextView.setText(carCategory.getName());
         TextView fromDateToDateTextView = view.findViewById(R.id.fromDateToDateTextView);
-        TextView sumTextView = view.findViewById(R.id.sumTextView);
+        TextView sumTextView = view.findViewById(R.id.sum_tv);
 
         if (carCategory.getPaidDate() != null && carCategory.getDeadlineDate() != null)
             fromDateToDateTextView.setText(context.getResources().getString(R.string.placeholder_3, Utility.formatDateToString(carCategory.getPaidDate()), "-", Utility.formatDateToString(carCategory.getDeadlineDate())));

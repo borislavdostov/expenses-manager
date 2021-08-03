@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
             finish();
         } else {
-            Toast.makeText(getBaseContext(), "Натиснете още веднъж за изход", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.press_one_more_time_to_exit), Toast.LENGTH_SHORT).show();
         }
 
         pressedTime = System.currentTimeMillis();

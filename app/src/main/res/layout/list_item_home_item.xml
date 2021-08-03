@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/monthTextView"
+        android:id="@+id/month_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/paidDateTextView"
+        android:id="@+id/paid_date_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,10 +33,10 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/monthTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/month_tv" />
 
     <ImageView
-        android:id="@+id/failureImageView"
+        android:id="@+id/error_iv"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="16dp"
@@ -47,7 +47,7 @@
         app:srcCompat="@drawable/error" />
 
     <ImageView
-        android:id="@+id/successImageView"
+        android:id="@+id/success_iv"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginEnd="16dp"
@@ -58,7 +58,7 @@
         app:srcCompat="@drawable/success" />
 
     <TextView
-        android:id="@+id/sumTextView"
+        android:id="@+id/sum_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -69,7 +69,7 @@
         android:textSize="14sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/successImageView"
+        app:layout_constraintEnd_toStartOf="@+id/success_iv"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View

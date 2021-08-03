@@ -11,6 +11,8 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +22,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bRd.mot.Dialog.QuestionDialog;
-import com.bRd.mot.Entity.HouseCategory;
+import com.bRd.mot.Entity.HomeCategory;
 import com.bRd.mot.Entity.HomeItem;
-import com.bRd.mot.Helper.DialogListener;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
 import com.bRd.mot.Utils.Utility;
@@ -42,12 +42,12 @@ public class HomeItemFragment extends Fragment {
 
     private Button backButton;
     private TextView titleTextView;
-    private ListView listView;
+    private RecyclerView home_item_rv;
 
     private ArrayList<HomeItem> homeItemList;
-    private HomeItemListViewAdapter homeItemListViewAdapter;
+    private HomeItemAdapter homeItemAdapter;
 
-    public HouseCategory houseCategory;
+    public HomeCategory homeCategory;
 
     private OnFragmentInteractionListener activityCommander;
 
@@ -77,27 +77,38 @@ public class HomeItemFragment extends Fragment {
 
         backButton = view.findViewById(R.id.backButton);
         titleTextView = view.findViewById(R.id.titleTextView);
-        listView = view.findViewById(R.id.listView);
+        home_item_rv = view.findViewById(R.id.home_item_rv);
 
         backButton.setOnClickListener(onClickListener);
-        listView.setOnItemClickListener(onItemClickListener);
-        listView.setOnItemLongClickListener(onItemLongClickListener);
+//        listView.setOnItemClickListener(onItemClickListener);
+//        listView.setOnItemLongClickListener(onItemLongClickListener);
 
-        titleTextView.setText(houseCategory.getName());
+        titleTextView.setText(homeCategory.getName());
 
         resizeButtonDrawable();
 
-        homeItemList = dbHelper.getHomeItemList(houseCategory.getId());
+        homeItemList = dbHelper.getHomeItemList(homeCategory.getId());
         if (homeItemList.size() == 0) {
             for (int i = 1; i <= 12; i++) {
-                HomeItem homeItem = new HomeItem(houseCategory.getId(), Utility.getMonthToBulgarian(i));
+                HomeItem homeItem = new HomeItem(homeCategory.getId(), Utility.getMonthToBulgarian(i));
                 dbHelper.insertHomeItem(homeItem);
             }
-            homeItemList = dbHelper.getHomeItemList(houseCategory.getId());
+            homeItemList = dbHelper.getHomeItemList(homeCategory.getId());
         }
 
-        homeItemListViewAdapter = new HomeItemListViewAdapter(this, homeItemList);
-        listView.setAdapter(homeItemListViewAdapter);
+        homeItemAdapter = new HomeItemAdapter(this, homeItemList, new HomeItemListener() {
+            @Override
+            public void onHomeItemClick(HomeItem homeItem) {
+                // TODO: 3.8.2021 г.
+            }
+
+            @Override
+            public void onHomeItemLongClick(HomeItem homeItem) {
+                // TODO: 3.8.2021 г.
+            }
+        });
+        home_item_rv.setAdapter(homeItemAdapter);
+        home_item_rv.setLayoutManager(new LinearLayoutManager(context));
 
         return view;
     }
@@ -155,12 +166,12 @@ public class HomeItemFragment extends Fragment {
         View view = getLayoutInflater().inflate(R.layout.dialog_home_payment, null);
         final ConstraintLayout editTextLayout = view.findViewById(R.id.editTextLayout);
         TextView titleTextView = view.findViewById(R.id.titleTextView);
-        TextView sumTextView = view.findViewById(R.id.sumTextView);
+        TextView sumTextView = view.findViewById(R.id.sum_tv);
         final EditText sumEditText = view.findViewById(R.id.sumEditText);
         Button okButton = view.findViewById(R.id.ok_btn);
         Button cancelButton = view.findViewById(R.id.cancel_btn);
 
-        titleTextView.setText(context.getString(R.string.home_payment_text, houseCategory.getName().toLowerCase(), homeItem.getMonth().toLowerCase()));
+        titleTextView.setText(context.getString(R.string.home_payment_text, homeCategory.getName().toLowerCase(), homeItem.getMonth().toLowerCase()));
 
         sumEditText.requestFocus();
         final InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -202,7 +213,7 @@ public class HomeItemFragment extends Fragment {
                     dialog.dismiss();
                     Utility.hideKeyboard(activity);
 
-                } else if (view.getId() == R.id.sumTextView) {
+                } else if (view.getId() == R.id.sum_tv) {
 
                     sumEditText.requestFocus();
                     if (inputMethodManager != null)

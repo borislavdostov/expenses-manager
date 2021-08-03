@@ -1,6 +1,6 @@
 package com.bRd.mot.Entity;
 
-public class HouseCategory {
+public class HomeCategory {
 
     private int id;
     private String name;
@@ -9,10 +9,10 @@ public class HouseCategory {
     private boolean hasConstantPrice;
     private double constantPrice;
 
-    public HouseCategory() {
+    public HomeCategory() {
     }
 
-    public HouseCategory(String name) {
+    public HomeCategory(String name) {
         this.name = name;
     }
 

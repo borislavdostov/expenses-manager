@@ -73,7 +73,7 @@ public class CarCategoryFragment extends Fragment {
         dbHelper = new DatabaseHelper(getContext());
 
         backButton = view.findViewById(R.id.backButton);
-        listView = view.findViewById(R.id.listView);
+        listView = view.findViewById(R.id.home_item_rv);
 
         backButton.setOnClickListener(onClickListener);
         listView.setOnItemLongClickListener(onItemLongClickListener);
