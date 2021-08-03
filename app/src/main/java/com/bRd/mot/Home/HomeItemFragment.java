@@ -51,16 +51,6 @@ public class HomeItemFragment extends Fragment {
 
     private OnFragmentInteractionListener activityCommander;
 
-    public HomeItemFragment() {
-    }
-
-    public static HomeItemFragment newInstance() {
-        HomeItemFragment fragment = new HomeItemFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,17 +86,28 @@ public class HomeItemFragment extends Fragment {
             homeItemList = dbHelper.getHomeItemList(homeCategory.getId());
         }
 
-        homeItemAdapter = new HomeItemAdapter(this, homeItemList, new HomeItemListener() {
+        homeItemAdapter = new HomeItemAdapter(context, homeItemList, new HomeItemListener() {
             @Override
             public void onHomeItemClick(HomeItem homeItem) {
-                // TODO: 3.8.2021 г.
+                // TODO: 3.8.2021 г. Refactor
+                showDialog(context, homeItem);
             }
 
             @Override
             public void onHomeItemLongClick(HomeItem homeItem) {
-                // TODO: 3.8.2021 г.
+                // TODO: 3.8.2021 г. Refactor
+                if (homeItem.isPaid()) {
+                    new QuestionDialog(context, "Наистина ли искате да отбележите тази сметка като неплатена?", () -> {
+                        homeItem.setPaid(false);
+                        homeItem.setPaidDate(null);
+                        homeItem.setSum(0.00);
+                        dbHelper.editHomeItem(homeItem);
+                        homeItemAdapter.notifyDataSetChanged();
+                    });
+                }
             }
         });
+
         home_item_rv.setAdapter(homeItemAdapter);
         home_item_rv.setLayoutManager(new LinearLayoutManager(context));
 
@@ -123,29 +124,11 @@ public class HomeItemFragment extends Fragment {
         }
     };
 
-    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-            HomeItem homeItem = (HomeItem) adapterView.getItemAtPosition(i);
-            showDialog(context, homeItem);
-        }
-    };
-
     private AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-            HomeItem homeItem = (HomeItem) adapterView.getItemAtPosition(i);
-            if (homeItem.isPaid()) {
-                new QuestionDialog(context, "Наистина ли искате да отбележите тази сметка като неплатена?", () -> {
-                    homeItem.setPaid(false);
-                    homeItem.setPaidDate(null);
-                    homeItem.setSum(0.00);
-                    dbHelper.editHomeItem(homeItem);
-                    homeItemListViewAdapter.notifyDataSetChanged();
-                });
-            }
+
 
             return true;
         }
@@ -203,7 +186,7 @@ public class HomeItemFragment extends Fragment {
                         homeItem.setPaidDate(Calendar.getInstance().getTime());
                         dbHelper.editHomeItem(homeItem);
 
-                        homeItemListViewAdapter.notifyDataSetChanged();
+                        homeItemAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                         Utility.hideKeyboard(activity);
                     }
