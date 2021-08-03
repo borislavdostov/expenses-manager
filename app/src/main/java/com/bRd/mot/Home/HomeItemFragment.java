@@ -23,8 +23,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bRd.mot.Dialog.QuestionDialog;
 import com.bRd.mot.Entity.HouseCategory;
 import com.bRd.mot.Entity.HomeItem;
+import com.bRd.mot.Helper.DialogListener;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
 import com.bRd.mot.Utils.Utility;
@@ -124,8 +126,15 @@ public class HomeItemFragment extends Fragment {
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
             HomeItem homeItem = (HomeItem) adapterView.getItemAtPosition(i);
-            if (homeItem.isPaid())
-                showQuestionDialog(context, homeItem);
+            if (homeItem.isPaid()) {
+                new QuestionDialog(context, "Наистина ли искате да отбележите тази сметка като неплатена?", () -> {
+                    homeItem.setPaid(false);
+                    homeItem.setPaidDate(null);
+                    homeItem.setSum(0.00);
+                    dbHelper.editHomeItem(homeItem);
+                    homeItemListViewAdapter.notifyDataSetChanged();
+                });
+            }
 
             return true;
         }
@@ -138,52 +147,6 @@ public class HomeItemFragment extends Fragment {
                 (int) (drawable.getIntrinsicHeight() * 0.4));
         ScaleDrawable sd = new ScaleDrawable(drawable, 0, 24, 24);
         backButton.setCompoundDrawables(sd.getDrawable(), null, null, null);
-    }
-
-    //showDatePickerDialog
-    private void showQuestionDialog(Context context, final HomeItem homeItem) {
-
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.dialog_question, null);
-
-        final TextView messageTextView = view.findViewById(R.id.message_tv);
-        Button cancelButton = view.findViewById(R.id.cancel_btn);
-        Button okButton = view.findViewById(R.id.ok_btn);
-
-        messageTextView.setText("Наистина ли искате да отбележите тази сметка като неплатена?");
-
-        final Dialog dialog = new Dialog(context, R.style.AppTheme);
-        dialog.setContentView(view);
-
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (view.getId() == R.id.cancel_btn) {
-                    dialog.dismiss();
-                } else {
-
-                    homeItem.setPaid(false);
-                    homeItem.setPaidDate(null);
-                    homeItem.setSum(0.00);
-                    dbHelper.editHomeItem(homeItem);
-                    dialog.dismiss();
-                    homeItemListViewAdapter.notifyDataSetChanged();
-                }
-            }
-        };
-
-        cancelButton.setOnClickListener(onClickListener);
-        okButton.setOnClickListener(onClickListener);
-
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.getWindow().setLayout(600, 300);
-            WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
-            lp.dimAmount = 0.7f;
-            dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        }
     }
 
     //showDialog

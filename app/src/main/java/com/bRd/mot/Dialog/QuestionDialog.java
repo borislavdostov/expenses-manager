@@ -12,18 +12,17 @@ import androidx.annotation.NonNull;
 import com.bRd.mot.Helper.DialogListener;
 import com.bRd.mot.R;
 
-import java.util.Calendar;
-import java.util.Date;
-
 public class QuestionDialog extends Dialog {
 
-    private DialogListener dialogListener;
+    private final String message;
+    private final DialogListener dialogListener;
 
     TextView message_tv;
     Button ok_btn, cancel_btn;
 
-    public QuestionDialog(@NonNull Context context, DialogListener dialogListener) {
+    public QuestionDialog(@NonNull Context context, String message, DialogListener dialogListener) {
         super(context);
+        this.message = message;
         this.dialogListener = dialogListener;
     }
 
@@ -39,12 +38,13 @@ public class QuestionDialog extends Dialog {
 
         ok_btn.setOnClickListener(onClick);
         cancel_btn.setOnClickListener(onClick);
+
+        message_tv.setText(message);
     }
 
     View.OnClickListener onClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
             if (view.getId() == R.id.backButton) {
                 dismiss();
             } else if (view.getId() == R.id.ok_btn) {
