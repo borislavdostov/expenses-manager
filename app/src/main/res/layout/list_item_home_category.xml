@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/right_arrow_gray" />
+        app:srcCompat="@drawable/tick" />
 
     <View
         android:layout_width="match_parent"
