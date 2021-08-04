@@ -27,15 +27,12 @@ public class HomeCategoryActivity extends AppCompatActivity {
 
         DatabaseHelper db = new DatabaseHelper(this);
         ArrayList<HomeCategory> houseCategories = db.getHouseCategories();
-        HomeCategoryAdapter homeCategoryAdapter =
-                new HomeCategoryAdapter(houseCategories, () -> goToActivity(HomeItem.class));
+//        HomeCategoryAdapter homeCategoryAdapter =
+//                new HomeCategoryAdapter(houseCategories, () -> goToActivity(HomeItem.class));
 
-        category_rv.setAdapter(homeCategoryAdapter);
+//        category_rv.setAdapter(homeCategoryAdapter);
         category_rv.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void goToActivity(Class<?> activity){
-        Intent intent = new Intent(HomeCategoryActivity.this, activity);
-        startActivity(intent);
-    }
+
 }
