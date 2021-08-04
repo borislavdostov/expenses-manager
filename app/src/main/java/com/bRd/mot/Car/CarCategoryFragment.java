@@ -118,10 +118,10 @@ public class CarCategoryFragment extends Fragment {
     private void showDialog(final Context context, final CarCategory carCategory) {
 
         View view = getLayoutInflater().inflate(R.layout.dialog_car_payment, null);
-        TextView titleTextView = view.findViewById(R.id.titleTextView);
+        TextView titleTextView = view.findViewById(R.id.title_tv);
         final EditText paidDateEditText = view.findViewById(R.id.paidDateEditText);
         final EditText deadlineDateEditText = view.findViewById(R.id.deadlineDateEditText);
-        final EditText sumEditText = view.findViewById(R.id.sumEditText);
+        final EditText sumEditText = view.findViewById(R.id.sum_et);
         Button okButton = view.findViewById(R.id.ok_btn);
         Button cancelButton = view.findViewById(R.id.cancel_btn);
 

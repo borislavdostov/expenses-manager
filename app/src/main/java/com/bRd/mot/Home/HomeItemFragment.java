@@ -24,9 +24,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.bRd.mot.Dialog.PayDialog;
 import com.bRd.mot.Dialog.QuestionDialog;
 import com.bRd.mot.Entity.HomeCategory;
 import com.bRd.mot.Entity.HomeItem;
+import com.bRd.mot.Helper.PayDialogListener;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
 import com.bRd.mot.Utils.Utility;
@@ -66,7 +68,7 @@ public class HomeItemFragment extends Fragment {
         dbHelper = new DatabaseHelper(getContext());
 
         backButton = view.findViewById(R.id.backButton);
-        titleTextView = view.findViewById(R.id.titleTextView);
+        titleTextView = view.findViewById(R.id.title_tv);
         home_item_rv = view.findViewById(R.id.home_item_rv);
 
         backButton.setOnClickListener(onClickListener);
@@ -89,8 +91,14 @@ public class HomeItemFragment extends Fragment {
         homeItemAdapter = new HomeItemAdapter(context, homeItemList, new HomeItemListener() {
             @Override
             public void onHomeItemClick(HomeItem homeItem) {
-                // TODO: 3.8.2021 г. Refactor
-                showDialog(context, homeItem);
+                new PayDialog(context, homeItem, sum -> {
+                    homeItem.setSum(sum);
+                    homeItem.setPaid(true);
+                    homeItem.setPaidDate(Calendar.getInstance().getTime());
+                    dbHelper.editHomeItem(homeItem);
+
+                    homeItemAdapter.notifyDataSetChanged();
+                });
             }
 
             @Override
@@ -141,86 +149,6 @@ public class HomeItemFragment extends Fragment {
                 (int) (drawable.getIntrinsicHeight() * 0.4));
         ScaleDrawable sd = new ScaleDrawable(drawable, 0, 24, 24);
         backButton.setCompoundDrawables(sd.getDrawable(), null, null, null);
-    }
-
-    //showDialog
-    private void showDialog(final Context context, final HomeItem homeItem) {
-
-        View view = getLayoutInflater().inflate(R.layout.dialog_home_payment, null);
-        final ConstraintLayout editTextLayout = view.findViewById(R.id.editTextLayout);
-        TextView titleTextView = view.findViewById(R.id.titleTextView);
-        TextView sumTextView = view.findViewById(R.id.sum_tv);
-        final EditText sumEditText = view.findViewById(R.id.sumEditText);
-        Button okButton = view.findViewById(R.id.ok_btn);
-        Button cancelButton = view.findViewById(R.id.cancel_btn);
-
-        titleTextView.setText(context.getString(R.string.home_payment_text, homeCategory.getName().toLowerCase(), homeItem.getMonth().toLowerCase()));
-
-        sumEditText.requestFocus();
-        final InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (inputMethodManager != null && editTextLayout.getVisibility() == View.VISIBLE)
-            inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
-
-        if (homeItem.isPaid()) {
-            sumEditText.setText(Utility.formatDoubleToString(homeItem.getSum()));
-            sumEditText.selectAll();
-        }
-
-        final Dialog dialog = new Dialog(context, R.style.AppTheme);
-        dialog.setContentView(view);
-
-        View.OnClickListener onClick = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (view.getId() == R.id.ok_btn) {
-
-                    if (sumEditText.getText().length() == 0) {
-
-                        Utility.setEditTextError(sumEditText, "Въведете сума");
-
-                    } else {
-
-                        homeItem.setSum(Utility.parseStringToDouble(sumEditText.getText().toString()));
-                        homeItem.setPaid(true);
-                        homeItem.setPaidDate(Calendar.getInstance().getTime());
-                        dbHelper.editHomeItem(homeItem);
-
-                        homeItemAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                        Utility.hideKeyboard(activity);
-                    }
-
-                } else if (view.getId() == R.id.cancel_btn) {
-
-                    dialog.dismiss();
-                    Utility.hideKeyboard(activity);
-
-                } else if (view.getId() == R.id.sum_tv) {
-
-                    sumEditText.requestFocus();
-                    if (inputMethodManager != null)
-                        inputMethodManager.showSoftInput(sumEditText, InputMethodManager.SHOW_IMPLICIT);
-
-                }
-            }
-        };
-
-        okButton.setOnClickListener(onClick);
-        cancelButton.setOnClickListener(onClick);
-        sumTextView.setOnClickListener(onClick);
-
-        if (dialog.getWindow() != null) {
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.getWindow().setLayout(600, 600);
-            WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
-            lp.dimAmount = 0.7f;
-            lp.y = -140;
-            dialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        }
-
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.show();
     }
 
     @Override
