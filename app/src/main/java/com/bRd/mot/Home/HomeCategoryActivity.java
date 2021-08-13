@@ -29,7 +29,7 @@ public class HomeCategoryActivity extends AppCompatActivity {
         DatabaseHelper db = new DatabaseHelper(this);
         ArrayList<HomeCategory> houseCategories = db.getHouseCategories();
         HomeCategoryAdapter homeCategoryAdapter =
-                new HomeCategoryAdapter(houseCategories, () -> {
+                new HomeCategoryAdapter(houseCategories, homeCategory -> {
                     Intent intent = new Intent(HomeCategoryActivity.this, HomeItem.class);
                     startActivity(intent);
                 });

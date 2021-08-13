@@ -39,7 +39,7 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
 
         holder.name_tv.setText(homeCategory.getName());
 
-        holder.itemView.setOnClickListener(view -> categoryClickListener.onCategoryClick());
+        holder.itemView.setOnClickListener(view -> categoryClickListener.onCategoryClick(homeCategory));
     }
 
     @Override

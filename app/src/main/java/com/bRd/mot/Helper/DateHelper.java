@@ -19,8 +19,9 @@ public class DateHelper {
 
     public static String formatDateToString(Date date) {
 
-        if (date == null)
+        if (date == null) {
             return "";
+        }
 
         return simpleDateFormat.format(date);
     }
