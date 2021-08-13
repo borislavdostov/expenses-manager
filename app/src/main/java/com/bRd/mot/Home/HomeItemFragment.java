@@ -28,6 +28,7 @@ import com.bRd.mot.Dialog.PayDialog;
 import com.bRd.mot.Dialog.QuestionDialog;
 import com.bRd.mot.Entity.HomeCategory;
 import com.bRd.mot.Entity.HomeItem;
+import com.bRd.mot.Helper.DateHelper;
 import com.bRd.mot.Helper.PayDialogListener;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
@@ -82,7 +83,7 @@ public class HomeItemFragment extends Fragment {
         homeItemList = dbHelper.getHomeItemList(homeCategory.getId());
         if (homeItemList.size() == 0) {
             for (int i = 1; i <= 12; i++) {
-                HomeItem homeItem = new HomeItem(homeCategory.getId(), Utility.getMonthToBulgarian(i));
+                HomeItem homeItem = new HomeItem(homeCategory.getId(), DateHelper.getMonthToBulgarian(i));
                 dbHelper.insertHomeItem(homeItem);
             }
             homeItemList = dbHelper.getHomeItemList(homeCategory.getId());

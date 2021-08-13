@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.bRd.mot.Entity.JobDay;
+import com.bRd.mot.Helper.DateHelper;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
 import com.bRd.mot.Utils.Utility;
@@ -71,7 +72,7 @@ public class JobFragment extends Fragment {
 
         ////////////////////////////////////////////////////////////////////////
 
-        calendarPickerView.init(Utility.getFirstDayOfCurrentYear(), Utility.getLastDayOfCurrentYear())
+        calendarPickerView.init(DateHelper.getFirstDayOfCurrentYear(), DateHelper.getLastDayOfCurrentYear())
                 .withSelectedDate(Calendar.getInstance().getTime());
 
         calendarPickerView.highlightDates(dbHelper.getJobDayDateList());

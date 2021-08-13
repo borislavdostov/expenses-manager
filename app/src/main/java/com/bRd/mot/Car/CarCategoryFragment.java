@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.bRd.mot.Dialog.DatePickerDialog;
 import com.bRd.mot.Entity.CarCategory;
+import com.bRd.mot.Helper.DateHelper;
 import com.bRd.mot.Helper.DatePickerListener;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
@@ -150,8 +151,8 @@ public class CarCategoryFragment extends Fragment {
 
                     } else {
 
-                        carCategory.setPaidDate(Utility.parseStringToDate(paidDateEditText.getText().toString()));
-                        carCategory.setDeadlineDate(Utility.parseStringToDate(deadlineDateEditText.getText().toString()));
+                        carCategory.setPaidDate(DateHelper.parseStringToDate(paidDateEditText.getText().toString()));
+                        carCategory.setDeadlineDate(DateHelper.parseStringToDate(deadlineDateEditText.getText().toString()));
                         carCategory.setSum(Utility.parseStringToDouble(sumEditText.getText().toString()));
                         carCategory.setPaid(true);
                         dbHelper.editCarCategory(carCategory);

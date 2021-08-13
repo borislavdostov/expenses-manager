@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bRd.mot.Entity.CarCategory;
+import com.bRd.mot.Helper.DateHelper;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.DatabaseHelper;
 import com.bRd.mot.Utils.Utility;
@@ -60,12 +61,14 @@ public class CarCategoryListViewAdapter extends BaseAdapter {
         TextView sumTextView = view.findViewById(R.id.sum_tv);
 
         if (carCategory.getPaidDate() != null && carCategory.getDeadlineDate() != null)
-            fromDateToDateTextView.setText(context.getResources().getString(R.string.placeholder_3, Utility.formatDateToString(carCategory.getPaidDate()), "-", Utility.formatDateToString(carCategory.getDeadlineDate())));
+            fromDateToDateTextView.setText(context.getResources().getString(R.string.placeholder_3,
+                    DateHelper.formatDateToString(carCategory.getPaidDate()),
+                    "-", DateHelper.formatDateToString(carCategory.getDeadlineDate())));
 
         ImageView imageView = view.findViewById(R.id.imageView);
 
         if (carCategory.isPaid() && Calendar.getInstance().getTime().before(
-                Utility.getDateBeforeSevenDays(carCategory.getDeadlineDate()))) {
+                DateHelper.getDateBeforeSevenDays(carCategory.getDeadlineDate()))) {
             imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.success));
             sumTextView.setText(context.getResources().getString(R.string.placeholder_2, Utility.formatDoubleToString(carCategory.getSum()), "лв."));
         }
@@ -83,7 +86,7 @@ public class CarCategoryListViewAdapter extends BaseAdapter {
             dbHelper.editCarCategory(carCategory);
 
         } else if (carCategory.isPaid() && carCategory.getDeadlineDate() != null && Calendar.getInstance().getTime().after(
-                Utility.getDateBeforeSevenDays(carCategory.getDeadlineDate()))) {
+                DateHelper.getDateBeforeSevenDays(carCategory.getDeadlineDate()))) {
             imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.warning));
             sumTextView.setText(context.getResources().getString(R.string.placeholder_2, Utility.formatDoubleToString(carCategory.getSum()), "лв."));
         }

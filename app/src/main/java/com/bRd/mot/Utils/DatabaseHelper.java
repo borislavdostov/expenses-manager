@@ -13,6 +13,7 @@ import com.bRd.mot.Entity.CarCategory;
 import com.bRd.mot.Entity.HomeCategory;
 import com.bRd.mot.Entity.HomeItem;
 import com.bRd.mot.Entity.JobDay;
+import com.bRd.mot.Helper.DateHelper;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -238,7 +239,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ContentValues cv = new ContentValues();
             cv.put(HOME_ITEM_HOME_CATEGORY_ID, homeItem.getHomeCategoryId());
             cv.put(HOME_ITEM_MONTH, homeItem.getMonth());
-            cv.put(HOME_ITEM_PAID_DATE, Utility.formatDateToString(homeItem.getPaidDate()));
+            cv.put(HOME_ITEM_PAID_DATE, DateHelper.formatDateToString(homeItem.getPaidDate()));
             cv.put(HOME_ITEM_IS_PAID, homeItem.isPaid());
             cv.put(HOME_ITEM_SUM, homeItem.getSum());
             cv.put(HOME_ITEM_NOTE, homeItem.getNote());
@@ -265,7 +266,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     HOME_ITEM_SUM + "='" + homeItem.getSum() + "'," +
                     HOME_ITEM_IS_PAID + "='" + isPaid + "'," +
                     HOME_ITEM_NOTE + "='" + homeItem.getNote() + "'," +
-                    HOME_ITEM_PAID_DATE + "='" + Utility.formatDateToString(homeItem.getPaidDate()) +
+                    HOME_ITEM_PAID_DATE + "='" + DateHelper.formatDateToString(homeItem.getPaidDate()) +
                     "' WHERE " + HOME_ITEM_ID + "=" + homeItem.getId());
 
         } catch (SQLException e) {
@@ -293,7 +294,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 homeItem.setMonth(cursor.getString(cursor.getColumnIndex(HOME_ITEM_MONTH)));
 
                 String s = cursor.getString(cursor.getColumnIndex(HOME_ITEM_PAID_DATE));
-                Date date = Utility.parseStringToDate(s);
+                Date date = DateHelper.parseStringToDate(s);
                 homeItem.setPaidDate(date);
 
                 boolean isPaid = (cursor.getInt(cursor.getColumnIndex(HOME_ITEM_IS_PAID)) == 1);
@@ -328,7 +329,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 homeItem.setMonth(cursor.getString(cursor.getColumnIndex(HOME_ITEM_MONTH)));
 
                 String s = cursor.getString(cursor.getColumnIndex(HOME_ITEM_PAID_DATE));
-                Date date = Utility.parseStringToDate(s);
+                Date date = DateHelper.parseStringToDate(s);
                 homeItem.setPaidDate(date);
 
                 boolean isPaid = (cursor.getInt(cursor.getColumnIndex(HOME_ITEM_IS_PAID)) == 1);
@@ -356,8 +357,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db = getWritableDatabase();
             ContentValues cv = new ContentValues();
             cv.put(CAR_CATEGORY_NAME, carCategory.getName());
-            cv.put(CAR_CATEGORY_PAID_DATE, Utility.formatDateToString(carCategory.getPaidDate()));
-            cv.put(CAR_CATEGORY_DEADLINE_DATE, Utility.formatDateToString(carCategory.getDeadlineDate()));
+            cv.put(CAR_CATEGORY_PAID_DATE, DateHelper.formatDateToString(carCategory.getPaidDate()));
+            cv.put(CAR_CATEGORY_DEADLINE_DATE, DateHelper.formatDateToString(carCategory.getDeadlineDate()));
             cv.put(CAR_CATEGORY_IS_PAID, carCategory.isPaid());
             cv.put(CAR_CATEGORY_SUM, carCategory.getSum());
             cv.put(CAR_CATEGORY_NOTE, carCategory.getNote());
@@ -382,8 +383,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db = getWritableDatabase();
             db.execSQL("UPDATE " + TABLE_CAR_CATEGORY + " SET " +
                     CAR_CATEGORY_NAME + "='" + carCategory.getName() + "'," +
-                    CAR_CATEGORY_PAID_DATE + "='" + Utility.formatDateToString(carCategory.getPaidDate()) + "'," +
-                    CAR_CATEGORY_DEADLINE_DATE + "='" + Utility.formatDateToString(carCategory.getDeadlineDate()) + "'," +
+                    CAR_CATEGORY_PAID_DATE + "='" + DateHelper.formatDateToString(carCategory.getPaidDate()) + "'," +
+                    CAR_CATEGORY_DEADLINE_DATE + "='" + DateHelper.formatDateToString(carCategory.getDeadlineDate()) + "'," +
                     CAR_CATEGORY_IS_PAID + "='" + isPaid + "'," +
                     CAR_CATEGORY_SUM + "='" + carCategory.getSum() + "'," +
                     CAR_CATEGORY_NOTE + "='" + carCategory.getNote() +
@@ -412,11 +413,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 carCategory.setName(cursor.getString(cursor.getColumnIndex(CAR_CATEGORY_NAME)));
 
                 String s1 = cursor.getString(cursor.getColumnIndex(CAR_CATEGORY_PAID_DATE));
-                Date date1 = Utility.parseStringToDate(s1);
+                Date date1 = DateHelper.parseStringToDate(s1);
                 carCategory.setPaidDate(date1);
 
                 String s2 = cursor.getString(cursor.getColumnIndex(CAR_CATEGORY_DEADLINE_DATE));
-                Date date2 = Utility.parseStringToDate(s2);
+                Date date2 = DateHelper.parseStringToDate(s2);
                 carCategory.setDeadlineDate(date2);
 
                 boolean isPaid = (cursor.getInt(cursor.getColumnIndex(CAR_CATEGORY_IS_PAID)) == 1);
@@ -446,7 +447,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             db = getWritableDatabase();
             ContentValues cv = new ContentValues();
-            cv.put(JOB_DAY_DATE, Utility.formatDateToString(jobDay.getDate()));
+            cv.put(JOB_DAY_DATE, DateHelper.formatDateToString(jobDay.getDate()));
             cv.put(JOB_DAY_IS_VISITED, jobDay.isVisited());
 
             db.insertOrThrow(TABLE_JOB_DAY, null, cv);
@@ -473,7 +474,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 jobDay.setId(cursor.getInt(cursor.getColumnIndex(JOB_DAY_ID)));
 
                 String s1 = cursor.getString(cursor.getColumnIndex(JOB_DAY_DATE));
-                Date date1 = Utility.parseStringToDate(s1);
+                Date date1 = DateHelper.parseStringToDate(s1);
                 jobDay.setDate(date1);
 
                 boolean isVisited = (cursor.getInt(cursor.getColumnIndex(JOB_DAY_IS_VISITED)) == 1);
@@ -503,7 +504,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 Date date = new Date();
                 String s1 = cursor.getString(cursor.getColumnIndex(JOB_DAY_DATE));
-                date = Utility.parseStringToDate(s1);
+                date = DateHelper.parseStringToDate(s1);
 
                 result.add(date);
             }
@@ -523,7 +524,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db = getReadableDatabase();
         try (Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_JOB_DAY +
-                " WHERE " + JOB_DAY_DATE + "='" + Utility.formatDateToString(date) + "'", null)) {
+                " WHERE " + JOB_DAY_DATE + "='" + DateHelper.formatDateToString(date) + "'", null)) {
 
             if (cursor.moveToFirst()) {
 
@@ -531,7 +532,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 jobDay.setId(cursor.getInt(cursor.getColumnIndex(JOB_DAY_ID)));
 
                 String s1 = cursor.getString(cursor.getColumnIndex(JOB_DAY_DATE));
-                Date date1 = Utility.parseStringToDate(s1);
+                Date date1 = DateHelper.parseStringToDate(s1);
                 jobDay.setDate(date1);
 
                 boolean isVisited = (cursor.getInt(cursor.getColumnIndex(JOB_DAY_IS_VISITED)) == 1);

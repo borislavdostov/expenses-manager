@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bRd.mot.Entity.HomeItem;
+import com.bRd.mot.Helper.DateHelper;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.Utility;
 
@@ -43,7 +44,7 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.ViewHo
         holder.month_tv.setText(homeItem.getMonth());
 
         if (homeItem.isPaid()) {
-            holder.paid_date_tv.setText(Utility.formatDateToString(homeItem.getPaidDate()));
+            holder.paid_date_tv.setText(DateHelper.formatDateToString(homeItem.getPaidDate()));
             holder.error_iv.setVisibility(View.GONE);
             holder.success_iv.setVisibility(View.VISIBLE);
             holder.sum_tv.setVisibility(View.VISIBLE);
