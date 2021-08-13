@@ -18,7 +18,7 @@
     <string name="saturday">събота</string>
     <string name="sunday">неделя</string>
     <string name="press_one_more_time_to_exit">Натиснете още веднъж за изход</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Настройки</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

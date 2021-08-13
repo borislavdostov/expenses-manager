@@ -22,22 +22,25 @@
 
         <activity
             android:name=".Home.HomeCategoryActivity"
+            android:label="Дом"
             android:launchMode="singleInstance"
             android:parentActivityName=".Activity.MainActivity" />
 
         <activity
             android:name=".Car.CarCategoryActivity"
+            android:label="Автомобил"
             android:launchMode="singleInstance"
             android:parentActivityName=".Activity.MainActivity"/>
 
         <activity
             android:name=".Job.JobActivity"
+            android:label="Работа"
             android:launchMode="singleInstance"
             android:parentActivityName=".Activity.MainActivity"/>
 
         <activity
             android:name=".Activity.SettingsActivity"
-            android:label="@string/title_activity_settings"
+            android:label="@string/settings"
             android:launchMode="singleInstance"
             android:parentActivityName=".Activity.MainActivity"/>
 

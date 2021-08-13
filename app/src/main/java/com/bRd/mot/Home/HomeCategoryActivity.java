@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.bRd.mot.Activity.MainActivity;
 import com.bRd.mot.Entity.HomeItem;
 import com.bRd.mot.Entity.HomeCategory;
 import com.bRd.mot.R;
@@ -27,12 +28,13 @@ public class HomeCategoryActivity extends AppCompatActivity {
 
         DatabaseHelper db = new DatabaseHelper(this);
         ArrayList<HomeCategory> houseCategories = db.getHouseCategories();
-//        HomeCategoryAdapter homeCategoryAdapter =
-//                new HomeCategoryAdapter(houseCategories, () -> goToActivity(HomeItem.class));
+        HomeCategoryAdapter homeCategoryAdapter =
+                new HomeCategoryAdapter(houseCategories, () -> {
+                    Intent intent = new Intent(HomeCategoryActivity.this, HomeItem.class);
+                    startActivity(intent);
+                });
 
-//        category_rv.setAdapter(homeCategoryAdapter);
+        category_rv.setAdapter(homeCategoryAdapter);
         category_rv.setLayoutManager(new LinearLayoutManager(this));
     }
-
-
 }
