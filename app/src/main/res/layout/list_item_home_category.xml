@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:foreground="@drawable/button_transparent_rounded"
+    android:background="@drawable/button_transparent_rounded"
     android:orientation="vertical">
 
     <TextView
@@ -16,7 +17,7 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center_vertical"
         android:text="Name"
-        android:textColor="@color/gray_darkest"
+        android:textColor="@color/gray_lightest"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tick" />
+        app:srcCompat="@drawable/left_arrow_white" />
 
     <View
         android:layout_width="match_parent"

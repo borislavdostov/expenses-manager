@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.bRd.mot.Car.CarCategoryActivity;
-import com.bRd.mot.Helper.ActivityDesigner;
 import com.bRd.mot.Helper.DatabaseHelper;
 import com.bRd.mot.Helper.DatabaseSeeder;
 import com.bRd.mot.Home.HomeCategoryActivity;
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ActivityDesigner.hideActionBar(this);
         DatabaseHelper db = new DatabaseHelper(this);
         DatabaseSeeder databaseSeeder = new DatabaseSeeder(db);
         databaseSeeder.seed();
