@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.bRd.mot.Car.CarCategoryActivity;
 import com.bRd.mot.Helper.ActivityDesigner;
+import com.bRd.mot.Helper.DatabaseHelper;
+import com.bRd.mot.Helper.DatabaseSeeder;
 import com.bRd.mot.Home.HomeCategoryActivity;
 import com.bRd.mot.Job.JobActivity;
 import com.bRd.mot.R;
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ActivityDesigner.hideActionBar(this);
+        DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseSeeder databaseSeeder = new DatabaseSeeder(db);
+        databaseSeeder.seed();
     }
 
     public void goToHomeCategoryActivity(View v){

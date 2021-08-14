@@ -3,7 +3,6 @@ package com.bRd.mot.Job;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ScaleDrawable;
 import android.os.Bundle;
@@ -14,24 +13,17 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.bRd.mot.Entity.JobDay;
 import com.bRd.mot.Helper.DateHelper;
 import com.bRd.mot.R;
-import com.bRd.mot.Utils.DatabaseHelper;
-import com.bRd.mot.Utils.Utility;
-import com.squareup.timessquare.CalendarCellDecorator;
-import com.squareup.timessquare.CalendarCellView;
+import com.bRd.mot.Helper.DatabaseHelper;
 import com.squareup.timessquare.CalendarPickerView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class JobFragment extends Fragment {
 

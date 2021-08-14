@@ -7,11 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.bRd.mot.Activity.MainActivity;
 import com.bRd.mot.Entity.HomeItem;
 import com.bRd.mot.Entity.HomeCategory;
 import com.bRd.mot.R;
-import com.bRd.mot.Utils.DatabaseHelper;
+import com.bRd.mot.Helper.DatabaseHelper;
 
 import java.util.ArrayList;
 

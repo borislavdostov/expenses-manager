@@ -1,8 +1,9 @@
-package com.bRd.mot.Utils;
+package com.bRd.mot.Helper;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -120,6 +121,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_CAR_CATEGORY);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_HOME_ITEM);
         sqLiteDatabase.execSQL("DROP TABLE " + TABLE_JOB_DAY);
+    }
+
+    public boolean isHomeCategoryTableEmpty(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        long count = DatabaseUtils.queryNumEntries(db, TABLE_HOME_CATEGORY);
+        db.close();
+        return count == 0;
     }
 
     //insertHomeCategory
