@@ -8,7 +8,7 @@
     tools:context=".Activity.MainActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/house_cv"
+        android:id="@+id/home_cv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -16,8 +16,8 @@
         android:layout_marginEnd="8dp"
         android:layout_weight="1"
         android:clickable="true"
+        android:focusable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:onClick="goToHomeCategoryActivity"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:layout_constraintBottom_toTopOf="@+id/car_cv"
@@ -77,14 +77,14 @@
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:clickable="true"
+        android:focusable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:onClick="goToCarCategoryActivity"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:layout_constraintBottom_toTopOf="@+id/job_cv"
-        app:layout_constraintEnd_toEndOf="@+id/house_cv"
-        app:layout_constraintStart_toStartOf="@+id/house_cv"
-        app:layout_constraintTop_toBottomOf="@+id/house_cv">
+        app:layout_constraintEnd_toEndOf="@+id/home_cv"
+        app:layout_constraintStart_toStartOf="@+id/home_cv"
+        app:layout_constraintTop_toBottomOf="@+id/home_cv">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -135,8 +135,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clickable="true"
+        android:focusable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:onClick="goToJobActivity"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:layout_constraintBottom_toTopOf="@+id/settings_cv"
@@ -195,8 +195,8 @@
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:clickable="true"
+        android:focusable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:onClick="goToSettingsActivity"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:layout_constraintBottom_toBottomOf="parent"

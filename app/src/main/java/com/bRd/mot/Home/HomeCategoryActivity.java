@@ -29,8 +29,8 @@ public class HomeCategoryActivity extends AppCompatActivity {
         ArrayList<HomeCategory> houseCategories = db.getHouseCategories();
         HomeCategoryAdapter homeCategoryAdapter =
                 new HomeCategoryAdapter(houseCategories, homeCategory -> {
-                    Intent intent = new Intent(HomeCategoryActivity.this, HomeItem.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(HomeCategoryActivity.this, HomeItem.class);
+//                    startActivity(intent);
                 });
 
         category_rv.setAdapter(homeCategoryAdapter);
