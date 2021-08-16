@@ -29,7 +29,7 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_home_category, parent, false);
+                .inflate(R.layout.item_home_category, parent, false);
         return new ViewHolder(view);
     }
 

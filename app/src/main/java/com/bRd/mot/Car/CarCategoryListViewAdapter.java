@@ -53,7 +53,7 @@ public class CarCategoryListViewAdapter extends BaseAdapter {
 
         LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (layoutInflater != null)
-            view = layoutInflater.inflate(R.layout.list_item_car_category, null);
+            view = layoutInflater.inflate(R.layout.item_car_category, null);
 
         TextView nameTextView = view.findViewById(R.id.name_tv);
         nameTextView.setText(carCategory.getName());

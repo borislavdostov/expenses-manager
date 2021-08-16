@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/button_transparent_rounded"
+    android:foreground="?attr/selectableItemBackground"
     android:orientation="vertical">
 
     <TextView
@@ -17,7 +17,7 @@
         android:fontFamily="sans-serif-light"
         android:gravity="center_vertical"
         android:text="Name"
-        android:textColor="@color/gray_lightest"
+        android:textColor="@color/gray_darkest"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/left_arrow_white" />
+        app:srcCompat="@drawable/ic_right_arrow_orange" />
 
     <View
         android:layout_width="match_parent"

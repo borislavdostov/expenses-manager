@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import com.bRd.mot.Entity.HomeItem;
 import com.bRd.mot.Entity.HomeCategory;
 import com.bRd.mot.R;
 import com.bRd.mot.Helper.DatabaseHelper;
