@@ -26,6 +26,7 @@ import com.bRd.mot.Dialog.DatePickerDialog;
 import com.bRd.mot.Entity.CarCategory;
 import com.bRd.mot.Helper.DateHelper;
 import com.bRd.mot.Helper.DatePickerListener;
+import com.bRd.mot.Helper.ErrorProvider;
 import com.bRd.mot.R;
 import com.bRd.mot.Helper.DatabaseHelper;
 import com.bRd.mot.Utils.Utility;
@@ -139,15 +140,15 @@ public class CarCategoryFragment extends Fragment {
 
                     if (paidDateEditText.getText().length() == 0) {
 
-                        Utility.setEditTextError(paidDateEditText, "Въведете дата на плащане");
+                        ErrorProvider.setError(paidDateEditText, "Въведете дата на плащане");
 
                     } else if (deadlineDateEditText.getText().length() == 0) {
 
-                        Utility.setEditTextError(deadlineDateEditText, "Въведете крайна дата");
+                        ErrorProvider.setError(deadlineDateEditText, "Въведете крайна дата");
 
                     } else if (sumEditText.getText().length() == 0) {
 
-                        Utility.setEditTextError(sumEditText, "Въведете сума");
+                        ErrorProvider.setError(sumEditText, "Въведете сума");
 
                     } else {
 

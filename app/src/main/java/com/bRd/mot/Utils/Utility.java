@@ -23,11 +23,6 @@ public class Utility {
         return Double.parseDouble(str);
     }
 
-    public static void setEditTextError(EditText editText, String error) {
-        editText.setError(error);
-        editText.requestFocus();
-    }
-
     public static void hideKeyboard(Activity activity) {
         activity.getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);

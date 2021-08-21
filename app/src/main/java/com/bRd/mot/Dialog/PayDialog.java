@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.bRd.mot.Entity.HomeItem;
-import com.bRd.mot.Helper.DialogListener;
+import com.bRd.mot.Helper.ErrorProvider;
 import com.bRd.mot.Helper.PayDialogListener;
 import com.bRd.mot.R;
 import com.bRd.mot.Utils.Utility;
@@ -59,7 +59,7 @@ public class PayDialog extends Dialog {
 
                 if (sum_et.getText().length() == 0) {
 
-                    Utility.setEditTextError(sum_et, "Въведете сума");
+                    ErrorProvider.setError(sum_et, "Въведете сума");
 
                 }
 
